@@ -27,7 +27,6 @@ class Endpoint(ABC):
         return round(self.avg_generation_times.sum(), 2)
 
     def run(self, key, **kwargs):
-       
         res = self.generate(**kwargs)
         return res
 
