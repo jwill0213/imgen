@@ -1,24 +1,5 @@
-from aiohttp import web
-import aiohttp_jinja2
-import jinja2
-from aiohttp.web import middleware
-from os import environ
-
 from flask import Flask, render_template, request, g, jsonify, make_response
 
-routes = web.RouteTableDef()
-
-
-@middleware
-async def middleware(request, handler):
-    try:
-        resp = await handler(request)
-        return resp
-    except web.HTTPException as e:
-        if e.status == 404:
-            return aiohttp_jinja2.render_template('404.html', request, context=None)
-        if e.status == 500:
-            return aiohttp_jinja2.render_template('500.html', request, context=None)
 
 app = Flask(__name__)
 
