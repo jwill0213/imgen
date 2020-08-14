@@ -12,7 +12,7 @@ class Master(Endpoint):
     params = ['text']
 
     def generate(self, avatars, text, usernames, kwargs):
-        base = Image.open(self.assets.get('assets/master/master.bmp')).convert('RGBA')
+        base = Image.open('assets/master/master.bmp').convert('RGBA')
         text = text.split(',')
         if len(text) == 3:
             a, b, c = text
